@@ -15,4 +15,8 @@ export class ToysService {
     return this.httpClient.get(environment.apiUrl + 'product/getProducts');
   }
 
+  updateProduct() {
+    return this.httpClient.patch(environment.apiUrl + 'product/updateProduct/:productId', {'name':name,'price':price});
+  }
+
 }
