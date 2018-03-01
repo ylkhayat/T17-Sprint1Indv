@@ -20,7 +20,8 @@ export class ToysComponent implements OnInit {
     },
     columns: {
       _id: {
-        title: 'id'
+        title: 'id',
+        show:false
       },
       name: {
         title: 'Product Name'
@@ -46,7 +47,6 @@ export class ToysComponent implements OnInit {
 
   onEditCall(event){
        event.confirm.resolve(event.newData);
-       console.log(event);
        this.toysService.updateProduct(event.newData._id, event.newData.name, event.newData.price).subscribe();
   }
 
@@ -56,12 +56,7 @@ export class ToysComponent implements OnInit {
     this.toysService.deleteProduct(event.data._id).subscribe();
   }
   ngOnInit() {
-    this.toysService.getProducts().subscribe(
-      (res: Response) => {
-        console.log(res.data)
-        this.data = res.data;
-      }
-    );
+    this.toysService.getProducts().subscribe(res => {console.log(res.data);this.data = res.data;});
    }
 
 }
