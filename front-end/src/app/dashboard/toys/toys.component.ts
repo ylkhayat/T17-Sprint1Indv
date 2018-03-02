@@ -19,10 +19,6 @@ export class ToysComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      _id: {
-        title: 'id',
-        show:false
-      },
       name: {
         title: 'Product Name'
       },
@@ -31,6 +27,15 @@ export class ToysComponent implements OnInit {
       },
       createdAt: {
         title: 'Created At'
+      },
+      updatedAt: {
+        title: 'Updated At'
+      },
+      component: {
+        title: 'Component Number'
+      },
+      seller: {
+        title: 'Seller Name'
       }
     }
   };
@@ -42,21 +47,20 @@ export class ToysComponent implements OnInit {
 
   onCreateCall(event){
        event.confirm.resolve(event.newData);
-       this.toysService.createProduct(event.newData.name, event.newData.price).subscribe();
+       this.toysService.createProduct(event.newData.name, event.newData.price, event.newData.seller).subscribe();
   }
 
   onEditCall(event){
        event.confirm.resolve(event.newData);
-       this.toysService.updateProduct(event.newData._id, event.newData.name, event.newData.price).subscribe();
+       this.toysService.updateProduct(event.newData._id, event.newData.name, event.newData.price, event.newData.seller).subscribe();
   }
 
   onDeleteCall(event){
     event.confirm.resolve(event.data._id);
-    console.log(event.data._id);
     this.toysService.deleteProduct(event.data._id).subscribe();
   }
   ngOnInit() {
-    this.toysService.getProducts().subscribe(res => {console.log(res.data);this.data = res.data;});
+    this.toysService.getProducts().subscribe((res:any) => {console.log(res.data);this.data = res.data;});
    }
 
 }
