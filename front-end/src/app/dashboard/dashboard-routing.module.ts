@@ -17,7 +17,6 @@ const routes: Routes = [
     },
     {
       path:'items',
-      loadChildren : './items/items.module#ItemsModule'
     },
     { path: 'authe',
     children: [

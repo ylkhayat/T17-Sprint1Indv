@@ -14,11 +14,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
   }],
   },
   {
-    title: 'Cart',
-    icon: 'fa fa-cart-arrow-down',
-    link: '/dashboard/items'
-  },
-  {
     title: 'Auth',
     icon: 'fa fa-lock',
     children:[{
